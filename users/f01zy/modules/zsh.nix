@@ -15,7 +15,8 @@
       la = "ls -la";
       se = "sudoedit";
       nrs = "sudo nixos-rebuild switch --flake /etc/nixos/#nixos";
-      cb = "cmake --build . -j 4";
+      cb = "cmake --build . -j4";
+      tw = "timew";
     };
   };
 }

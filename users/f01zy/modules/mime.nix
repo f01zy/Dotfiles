@@ -15,7 +15,7 @@
     lf = {
       name = "lf";
       genericName = "File Manager";
-      exec = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.lf}/bin/lf %u";
+      exec = "${pkgs.foot}/bin/foot ${pkgs.lf}/bin/lf %u";
       icon = "system-file-manager";
       terminal = false;
       categories = [

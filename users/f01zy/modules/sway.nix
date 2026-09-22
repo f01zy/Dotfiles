@@ -44,7 +44,7 @@
           mod = "Mod4";
         in
         lib.mkOptionDefault {
-          "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty -e tmux new-session -A -s main";
+          "${mod}+Return" = "exec ${pkgs.foot}/bin/foot tmux new-session -A -s main";
           "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -theme launcher";
           "${mod}+Shift+q" = "kill";
           "${mod}+Shift+c" = "reload";
@@ -83,6 +83,7 @@
 
           "${mod}+v" = "splitv";
           "${mod}+s" = "layout stacking";
+          "${mod}+t" = "layout tabbed";
           "${mod}+e" = "layout toggle split";
           "${mod}+f" = "fullscreen";
           "${mod}+Shift+space" = "floating toggle";
@@ -94,7 +95,7 @@
           "${mod}+r" = "mode resize";
 
           "${mod}+b" = "exec zen";
-          "${mod}+m" = "exec ${pkgs.alacritty}/bin/alacritty -e lf";
+          "${mod}+m" = "exec ${pkgs.foot}/bin/foot lf";
           "${mod}+w" = "exec widget-popup wallpapers";
           "${mod}+Shift+w" = "exec wallpaper random";
           "${mod}+Shift+x" = "exec swaylock";
@@ -149,9 +150,9 @@
     extraConfig = ''
       corner_radius 8
       blur disable
-      for_window [app_id="Alacritty"] blur enable
-      for_window [app_id="Alacritty"] blur_passes 2
-      for_window [app_id="Alacritty"] blur_radius 6
+      for_window [app_id="foot"] blur enable
+      for_window [app_id="foot"] blur_passes 2
+      for_window [app_id="foot"] blur_radius 5
     '';
   };
 }

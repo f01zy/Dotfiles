@@ -10,7 +10,10 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = false;
+  };
   networking.hostName = "nixos";
   system.stateVersion = "26.05";
   time.timeZone = "Europe/Moscow";
@@ -55,7 +58,6 @@
   services.gnome.gnome-keyring.enable = true;
   services.dbus.enable = true;
   services.chrony.enable = true;
-  services.zerotierone.enable = true;
 
   services.displayManager.ly = {
     enable = true;

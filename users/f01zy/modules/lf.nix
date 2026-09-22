@@ -6,9 +6,10 @@ let
     h="$3"
     x="$4"
     y="$5"
-    case "$(file --mime-type -Lb "$file")" in
+
+    case "$(${pkgs.file}/bin/file --mime-type -Lb "$file")" in
       image/*)
-        ${pkgs.chafa}/bin/chafa --size "$w"x"$h" --fit-width --symbols sex --color-space rgb "$file"
+        ${pkgs.chafa}/bin/chafa --format=sixel --size="''${w}x''${h}" --fit-width "$file"
         exit 1
         ;;
       text/*|application/json)
@@ -29,9 +30,9 @@ in
 
   programs.lf = {
     enable = true;
-    previewer.source = lf-previewer;
 
     settings = {
+      preview = true;
       drawbox = true;
       icons = true;
       ignorecase = true;
@@ -51,7 +52,7 @@ in
           printf "Delete selected files? [y/N] "
           read ans
           if [ "$ans" = "y" ] || [ "$ans" = "Y" ]; then
-              rm -rf $fx
+            rm -rf $fx
           fi
         }}
       '';
@@ -64,5 +65,9 @@ in
       "o" = "open";
       "D" = "delete";
     };
+
+    extraConfig = ''
+      set previewer ${lf-previewer}
+    '';
   };
 }

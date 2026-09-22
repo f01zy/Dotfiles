@@ -9,7 +9,7 @@
 > * **OS:** NixOS
 > * **Window Manager:** Swayfx
 > * **Shell:** Zsh
-> * **Terminal:** Alacritty
+> * **Terminal:** Foot 
 > * **Editor:** Nixvim
 
 ## Installation

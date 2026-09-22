@@ -4,7 +4,8 @@
     accent = "sky";
     flavor = "mocha";
 
-    alacritty.enable = true;
+    starship.enable = true;
+    foot.enable = true;
     bat.enable = true;
     mako.enable = true;
     swaylock.enable = true;

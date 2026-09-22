@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   lock = "${pkgs.swaylock}/bin/swaylock -f";
-  display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
+  suspend = "${pkgs.systemd}/bin/systemctl suspend";
 in
 {
   services.swayidle = {
@@ -12,13 +12,8 @@ in
         command = lock;
       }
       {
-        timeout = 1800;
-        command = display "off";
-        resumeCommand = display "on";
-      }
-      {
-        timeout = 1805;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
+        timeout = 3600;
+        command = suspend;
       }
     ];
   };

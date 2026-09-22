@@ -10,9 +10,9 @@
 
     ./modules/nixvim/main.nix
     ./modules/eww/main.nix
-    ./modules/alacritty.nix
+    ./modules/foot.nix
+    ./modules/starship.nix
     ./modules/zsh.nix
-    ./modules/ncspot.nix
     ./modules/fastfetch.nix
     ./modules/sway.nix
     ./modules/waybar.nix
@@ -25,6 +25,8 @@
     ./modules/swaylock.nix
     ./modules/swayidle.nix
     ./modules/rofi.nix
+    ./modules/mpd.nix
+    ./modules/rmpc.nix
     ./modules/tmux.nix
     ./modules/git.nix
     ./modules/catppuccin.nix
@@ -42,23 +44,28 @@
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Programs
-    spotify
     discord
     telegram-desktop
     obsidian
     obs-studio
     timewarrior
+    taskwarrior3
     qalculate-gtk
-    bluetui
+    picard
+    chromaprint
 
     # Development & Build Tools
+    zip
+    unzip
+    unrar
     mosh
+    ffmpeg
     cmake
     gnumake
     gcc
-    unzip
-    nixfmt
     gdb
+    emscripten
+    python3
     wakatime-cli
 
     # System & Media Utils
@@ -67,6 +74,7 @@
     ripgrep
     playerctl
     qimgv
+    mpc
     mpv
     bat
     awww

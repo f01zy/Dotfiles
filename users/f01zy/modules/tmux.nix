@@ -25,6 +25,7 @@
     extraConfig = ''
       set -g mouse on
       set -g default-terminal "tmux-256color"
+      set -g allow-passthrough on
       set -ag terminal-overrides ",xterm-256color:RGB"
     '';
   };

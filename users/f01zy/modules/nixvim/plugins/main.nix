@@ -2,9 +2,17 @@
   imports = [
     ./alpha.nix
     ./telescope.nix
+    ./treesitter.nix
     ./bufferline.nix
-    ./formatters.nix
+    ./lsp.nix
+    ./conform-nvim.nix
+    ./cmp.nix
     ./cord.nix
+    ./obsidian.nix
+    ./inc-rename.nix
+    ./toggleterm.nix
+    ./auto-session.nix
+    ./lualine.nix
   ];
 
   programs.nixvim.plugins = {
@@ -16,28 +24,6 @@
     dressing.enable = true;
     gitsigns.enable = true;
     nvim-autopairs.enable = true;
-
-    auto-session = {
-      enable = true;
-      settings = {
-        autoRestore.enabled = true;
-        autoSave.enabled = true;
-      };
-    };
-
-    inc-rename = {
-      enable = true;
-      settings = {
-        cmd_name = "IncRename";
-      };
-    };
-
-    toggleterm = {
-      enable = true;
-      settings = {
-        direction = "horizontal";
-        size = 10;
-      };
-    };
+    render-markdown.enable = true;
   };
 }
