@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
+
   boot.loader = {
     grub = {
       enable = true;
@@ -10,14 +11,26 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking.networkmanager = {
-    enable = true;
-    wifi.powersave = false;
-  };
-  networking.hostName = "nixos";
   system.stateVersion = "26.05";
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  networking = {
+    hostName = "nixos";
+    networkmanager.dns = "systemd-resolved";
+    firewall.checkReversePath = "loose";
+
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
+
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -35,10 +48,6 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
-  services.xserver.xkb = {
-    layout = "us";
-  };
-
   users.users."f01zy" = {
     isNormalUser = true;
     description = "Aminov Ali";
@@ -49,21 +58,34 @@
     shell = pkgs.zsh;
   };
 
-  # Packages
   environment.systemPackages = with pkgs; [
     wl-clipboard
   ];
 
-  # Services
-  services.gnome.gnome-keyring.enable = true;
-  services.dbus.enable = true;
-  services.chrony.enable = true;
+  services = {
+    resolved.enable = true;
+    usbmuxd.enable = true;
+    gnome.gnome-keyring.enable = true;
+    dbus.enable = true;
+    chrony.enable = true;
 
-  services.displayManager.ly = {
-    enable = true;
-    settings = {
-      bigclock = "en";
-      clear_password = true;
+    xserver.xkb = {
+      layout = "us";
+    };
+
+    komga = {
+      enable = true;
+      openFirewall = true;
+      stateDir = "/var/lib/komga";
+      settings.server.port = 9500;
+    };
+
+    displayManager.ly = {
+      enable = true;
+      settings = {
+        bigclock = "en";
+        clear_password = true;
+      };
     };
   };
 
@@ -77,16 +99,16 @@
     powerOnBoot = false;
   };
 
-  # Programs
-  programs.amnezia-vpn.enable = true;
-  programs.sway.enable = true;
-  programs.zsh.enable = true;
-  programs.nix-ld.enable = true;
+  programs = {
+    sway.enable = true;
+    zsh.enable = true;
+    nix-ld.enable = true;
 
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
   };
 }

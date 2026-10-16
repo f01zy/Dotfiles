@@ -1,9 +1,11 @@
 { ... }: {
   catppuccin = {
     enable = true;
+    autoEnable = false;
     accent = "sky";
     flavor = "mocha";
 
+    fzf.enable = true;
     starship.enable = true;
     foot.enable = true;
     bat.enable = true;

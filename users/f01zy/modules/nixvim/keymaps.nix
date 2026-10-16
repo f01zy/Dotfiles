@@ -61,5 +61,10 @@
       key = "<Esc>";
       action = "<C-\\><C-n>";
     }
+    {
+      mode = "n";
+      key = "<leader>gg";
+      action = "<cmd>Neogit<CR>";
+    }
   ];
 }

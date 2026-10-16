@@ -6,7 +6,6 @@
     dataDir = "${config.home.homeDirectory}/.config/mpd";
     dbFile = "${config.home.homeDirectory}/.config/mpd/database";
     playlistDirectory = "${config.home.homeDirectory}/.config/mpd/playlists";
-
     network.listenAddress = "127.0.0.1";
     network.port = 6600;
 
@@ -32,4 +31,11 @@
   home.activation.createMpdDirs = config.lib.dag.entryAfter [ "writeBoundary" ] ''
     $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}/.config/mpd/playlists"
   '';
+
+  services.mpd-mpris = {
+    enable = true;
+    mpd.host = "127.0.0.1";
+    mpd.port = 6600;
+  };
+
 }

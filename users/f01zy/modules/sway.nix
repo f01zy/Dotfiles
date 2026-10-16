@@ -97,6 +97,7 @@
           "${mod}+b" = "exec zen";
           "${mod}+m" = "exec ${pkgs.foot}/bin/foot lf";
           "${mod}+w" = "exec widget-popup wallpapers";
+          "${mod}+Shift+p" = "exec playerctl -p mpd play-pause";
           "${mod}+Shift+w" = "exec wallpaper random";
           "${mod}+Shift+x" = "exec swaylock";
           "Print" = "exec grim -g \"$(slurp)\" -t png - | wl-copy -t image/png";

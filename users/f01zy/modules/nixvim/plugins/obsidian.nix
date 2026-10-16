@@ -2,7 +2,7 @@
   programs.nixvim.plugins.obsidian = {
     enable = true;
     settings = {
-      frontmatter.enable = false;
+      frontmatter.enabled = false;
       ui.enable = false;
       legacy_commands = false;
       new_notes_location = "current_dir";

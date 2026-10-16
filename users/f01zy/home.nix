@@ -11,8 +11,7 @@
     ./modules/nixvim/main.nix
     ./modules/eww/main.nix
     ./modules/foot.nix
-    ./modules/starship.nix
-    ./modules/zsh.nix
+    ./modules/shell.nix
     ./modules/fastfetch.nix
     ./modules/sway.nix
     ./modules/waybar.nix
@@ -21,7 +20,6 @@
     ./modules/zathura.nix
     ./modules/gnupg.nix
     ./modules/mime.nix
-    ./modules/zen.nix
     ./modules/swaylock.nix
     ./modules/swayidle.nix
     ./modules/rofi.nix
@@ -53,6 +51,8 @@
     qalculate-gtk
     picard
     chromaprint
+    foliate
+    sqlitebrowser
 
     # Development & Build Tools
     zip
@@ -66,6 +66,7 @@
     gdb
     emscripten
     python3
+    sqlite
     wakatime-cli
 
     # System & Media Utils

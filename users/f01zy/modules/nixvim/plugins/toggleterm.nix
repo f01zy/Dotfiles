@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       direction = "horizontal";
-      size = 10;
+      size = 14;
     };
   };
 }
