@@ -14,11 +14,8 @@
 
     opts = {
       number = true;
-      relativenumber = false;
+      relativenumber = true;
       shiftwidth = 2;
-      langmap =
-        "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,"
-        + "фисвуапршолдьтщзйкыегмцчняж;abcdefghijklmnopqrstuvwxyz;";
     };
 
     colorschemes.catppuccin = {

@@ -18,7 +18,15 @@
   networking = {
     hostName = "nixos";
     networkmanager.dns = "systemd-resolved";
-    firewall.checkReversePath = "loose";
+
+    firewall = {
+      enable = true;
+      checkReversePath = "loose";
+      allowedTCPPorts = [
+        9501
+        2234
+      ];
+    };
 
     nameservers = [
       "1.1.1.1"
@@ -73,19 +81,26 @@
       layout = "us";
     };
 
-    komga = {
-      enable = true;
-      openFirewall = true;
-      stateDir = "/var/lib/komga";
-      settings.server.port = 9500;
-    };
-
     displayManager.ly = {
       enable = true;
       settings = {
         bigclock = "en";
         clear_password = true;
       };
+    };
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+      ];
     };
   };
 

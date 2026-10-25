@@ -21,7 +21,6 @@
     ./modules/gnupg.nix
     ./modules/mime.nix
     ./modules/swaylock.nix
-    ./modules/swayidle.nix
     ./modules/rofi.nix
     ./modules/mpd.nix
     ./modules/rmpc.nix
@@ -29,13 +28,13 @@
     ./modules/git.nix
     ./modules/catppuccin.nix
     ./modules/cursor.nix
+    ./modules/navidrome.nix
   ];
 
   # Packages
   home.packages = with pkgs; [
     # Scripts
     (import ./scripts/wallpaper.nix { inherit pkgs; })
-    (import ./scripts/now-playing.nix { inherit pkgs; })
     (import ./scripts/widget-popup.nix { inherit pkgs; })
 
     # Inputs
@@ -51,14 +50,13 @@
     qalculate-gtk
     picard
     chromaprint
-    foliate
     sqlitebrowser
+    nicotine-plus
 
     # Development & Build Tools
     zip
     unzip
     unrar
-    mosh
     ffmpeg
     cmake
     gnumake
@@ -68,6 +66,7 @@
     python3
     sqlite
     wakatime-cli
+    mosh
 
     # System & Media Utils
     nerd-fonts.iosevka
