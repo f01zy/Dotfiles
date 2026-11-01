@@ -11,7 +11,7 @@
     (
       address: "127.0.0.1:6600",
       theme: Some("theme.ron"),
-      lyrics_dir: Some("~/Media/Music/.lyrics"),
+      lyrics_dir: Some("~/Media/Music"),
       keybinds:(
 	global: {
 	  "1": SwitchToTab("Queue"),

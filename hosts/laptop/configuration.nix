@@ -1,6 +1,17 @@
-{ pkgs, ... }:
-{
-  imports = [ ./hardware-configuration.nix ];
+{ pkgs, ... }: {
+  imports = [
+    ./hardware-configuration.nix
+    ./services/main.nix
+  ];
+
+  system.stateVersion = "26.05";
+  time.timeZone = "Europe/Moscow";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   boot.loader = {
     grub = {
@@ -11,10 +22,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  system.stateVersion = "26.05";
-  time.timeZone = "Europe/Moscow";
-  i18n.defaultLocale = "en_US.UTF-8";
-
   networking = {
     hostName = "nixos";
     networkmanager.dns = "systemd-resolved";
@@ -22,10 +29,6 @@
     firewall = {
       enable = true;
       checkReversePath = "loose";
-      allowedTCPPorts = [
-        9501
-        2234
-      ];
     };
 
     nameservers = [
@@ -38,11 +41,6 @@
       wifi.powersave = false;
     };
   };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "ru_RU.UTF-8";
@@ -59,59 +57,27 @@
   users.users."f01zy" = {
     isNormalUser = true;
     description = "Aminov Ali";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
-    shell = pkgs.zsh;
   };
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
   ];
 
-  services = {
-    resolved.enable = true;
-    usbmuxd.enable = true;
-    gnome.gnome-keyring.enable = true;
-    dbus.enable = true;
-    chrony.enable = true;
-
-    xserver.xkb = {
-      layout = "us";
-    };
-
-    displayManager.ly = {
+  hardware = {
+    graphics = {
       enable = true;
-      settings = {
-        bigclock = "en";
-        clear_password = true;
-      };
+      enable32Bit = true;
     };
 
-    avahi = {
+    bluetooth = {
       enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
+      powerOnBoot = false;
     };
-
-    printing = {
-      enable = true;
-      drivers = with pkgs; [
-        cups-filters
-        cups-browsed
-      ];
-    };
-  };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
   };
 
   programs = {
@@ -124,6 +90,11 @@
       extraCompatPackages = with pkgs; [
         proton-ge-bin
       ];
+    };
+
+    throne = {
+      enable = true;
+      tunMode.enable = true;
     };
   };
 }

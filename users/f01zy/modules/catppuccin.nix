@@ -13,5 +13,6 @@
     swaylock.enable = true;
     tmux.enable = true;
     zathura.enable = true;
+    btop.enable = true;
   };
 }

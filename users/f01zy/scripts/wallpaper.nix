@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "wallpaper" ''
   CACHE_FILE="$HOME/.cache/current_wallpaper"
   DIR="$HOME/Media/Wallpapers"

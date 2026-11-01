@@ -28,7 +28,7 @@
     ./modules/git.nix
     ./modules/catppuccin.nix
     ./modules/cursor.nix
-    ./modules/navidrome.nix
+    ./modules/beets.nix
   ];
 
   # Packages
@@ -43,37 +43,36 @@
     # Programs
     discord
     telegram-desktop
+    element-desktop
     obsidian
     obs-studio
     timewarrior
     taskwarrior3
     qalculate-gtk
-    picard
-    chromaprint
     sqlitebrowser
-    nicotine-plus
+    lrcget
+    btop
 
     # Development & Build Tools
     zip
     unzip
-    unrar
+    mosh
     ffmpeg
     cmake
     gnumake
     gcc
     gdb
+    age
     emscripten
     python3
     sqlite
     wakatime-cli
-    mosh
 
     # System & Media Utils
     nerd-fonts.iosevka
     papirus-icon-theme
     ripgrep
     playerctl
-    qimgv
     mpc
     mpv
     bat
