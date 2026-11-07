@@ -3,53 +3,26 @@
   home.homeDirectory = "/home/f01zy";
   home.stateVersion = "26.05";
 
-  # Modules
   imports = [
     inputs.nixvim.homeModules.nixvim
+    inputs.nixcord.homeModules.nixcord
     inputs.catppuccin.homeModules.catppuccin
-
-    ./modules/nixvim/main.nix
-    ./modules/eww/main.nix
-    ./modules/foot.nix
-    ./modules/shell.nix
-    ./modules/fastfetch.nix
-    ./modules/sway.nix
-    ./modules/waybar.nix
-    ./modules/mako.nix
-    ./modules/lf.nix
-    ./modules/zathura.nix
-    ./modules/gnupg.nix
-    ./modules/mime.nix
-    ./modules/swaylock.nix
-    ./modules/rofi.nix
-    ./modules/mpd.nix
-    ./modules/rmpc.nix
-    ./modules/tmux.nix
-    ./modules/git.nix
-    ./modules/catppuccin.nix
-    ./modules/cursor.nix
-    ./modules/beets.nix
+    ./modules/default.nix
+    ./scripts/default.nix
   ];
 
-  # Packages
   home.packages = with pkgs; [
-    # Scripts
-    (import ./scripts/wallpaper.nix { inherit pkgs; })
-    (import ./scripts/widget-popup.nix { inherit pkgs; })
-
     # Inputs
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Programs
-    discord
     telegram-desktop
-    element-desktop
     obsidian
     obs-studio
-    timewarrior
-    taskwarrior3
     qalculate-gtk
     sqlitebrowser
+    qbittorrent
+    picard
     lrcget
     btop
 
@@ -62,7 +35,6 @@
     gnumake
     gcc
     gdb
-    age
     emscripten
     python3
     sqlite
@@ -73,6 +45,7 @@
     papirus-icon-theme
     ripgrep
     playerctl
+    chromaprint
     mpc
     mpv
     bat

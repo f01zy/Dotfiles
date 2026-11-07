@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ./services/main.nix
+    ./services/default.nix
   ];
 
   system.stateVersion = "26.05";
@@ -59,10 +59,32 @@
     description = "Aminov Ali";
     shell = pkgs.zsh;
     extraGroups = [
+      "media"
       "networkmanager"
       "wheel"
     ];
   };
+
+  users.groups.media = { };
+  users.users.kavita.extraGroups = [ "media" ];
+  users.users.slskd.extraGroups = [ "media" ];
+  users.users.navidrome.extraGroups = [ "media" ];
+
+  systemd.tmpfiles.rules = [
+    "d /srv/media                2775 f01zy media -"
+    "d /srv/media/Music          2775 f01zy media -"
+    "d /srv/media/Manga          2775 f01zy media -"
+    "d /srv/media/Anime          2775 f01zy media -"
+    "d /srv/media/Movies         2775 f01zy media -"
+    "d /srv/media/Books          2775 f01zy media -"
+    "d /srv/media/Wallpapers     2775 f01zy media -"
+    "Z /srv/media                2775 f01zy media -"
+    "d /var/lib/slskd            0755 slskd slskd -"
+    "d /var/lib/slskd/downloads  2775 slskd media -"
+    "d /var/lib/slskd/incomplete 2775 slskd media -"
+    "Z /var/lib/slskd/downloads  2775 slskd media -"
+    "Z /var/lib/slskd/incomplete 2775 slskd media -"
+  ];
 
   environment.systemPackages = with pkgs; [
     wl-clipboard

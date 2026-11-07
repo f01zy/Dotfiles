@@ -2,7 +2,7 @@
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "${config.home.homeDirectory}/Media/Music";
+    musicDirectory = "/srv/media/Music";
     dataDir = "${config.home.homeDirectory}/.config/mpd";
     dbFile = "${config.home.homeDirectory}/.config/mpd/database";
     playlistDirectory = "${config.home.homeDirectory}/.config/mpd/playlists";

@@ -1,16 +1,17 @@
-{ lib, ... }: {
+{ pkgs, ... }: {
   services.navidrome = {
     enable = true;
     openFirewall = true;
+
+    plugins = with pkgs.navidromePlugins; [
+      discord-rich-presence
+    ];
+
     settings = {
-      MusicFolder = "/home/f01zy/Media/Music";
+      MusicFolder = "/srv/media/Music";
       DataFolder = "/var/lib/navidrome";
       Port = 9501;
       Address = "0.0.0.0";
     };
-  };
-
-  systemd.services.navidrome.serviceConfig = {
-    ProtectHome = lib.mkForce false;
   };
 }

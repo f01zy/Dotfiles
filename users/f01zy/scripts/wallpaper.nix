@@ -1,7 +1,7 @@
 { pkgs, ... }:
 pkgs.writeShellScriptBin "wallpaper" ''
   CACHE_FILE="$HOME/.cache/current_wallpaper"
-  DIR="$HOME/Media/Wallpapers"
+  DIR="/srv/media/Wallpapers"
 
   start_daemon() {
     if ! ${pkgs.procps}/bin/pgrep -x ".awww-daemon-wr" > /dev/null; then

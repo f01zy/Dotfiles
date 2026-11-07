@@ -7,12 +7,20 @@
     oh-my-zsh.enable = true;
 
     shellAliases = {
-      ll = "ls -l";
-      la = "ls -la";
-      se = "sudoedit";
+      # General
       nrs = "sudo nixos-rebuild switch --flake /etc/nixos/#nixos";
       cb = "cmake --build . -j4";
-      tw = "timew";
+      ll = "ls -l";
+      la = "ls -la";
+      ff = "fastfetch";
+
+      # Timewarrior
+      t = "timew";
+      ts = "timew summary";
+      td = "timew day";
+      tw = "timew week";
+      today = "timew summary :today";
+      yest = "timew summary :yesterday";
     };
   };
 

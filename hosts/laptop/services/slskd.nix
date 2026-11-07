@@ -1,9 +1,7 @@
-{ lib, ... }: {
+{ ... }: {
   services.slskd = {
     enable = true;
     openFirewall = false;
-    user = "f01zy";
-    group = "users";
     environmentFile = "/etc/slskd/env";
 
     settings = {
@@ -21,9 +19,11 @@
 
       shares = {
         directories = [
-          "/home/f01zy/Media/Music"
-          "/home/f01zy/Media/Manga"
-          "/home/f01zy/Media/Books"
+          "/srv/media/Music"
+          "/srv/media/Books"
+          "/srv/media/Manga"
+          "/srv/media/Anime"
+          "/srv/media/Movies"
         ];
       };
 
@@ -43,6 +43,6 @@
   };
 
   systemd.services.slskd.serviceConfig = {
-    ProtectHome = lib.mkForce false;
+    UMask = "0002";
   };
 }
